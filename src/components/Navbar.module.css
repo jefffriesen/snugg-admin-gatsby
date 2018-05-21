@@ -1,0 +1,10 @@
+.sidebar {
+  position: fixed;
+  height: 100%;
+  /* width: 15rem; */
+  width: 180px;
+  top: 0;
+  left: 0;
+  background-color: #1b1c1d;
+  z-index: 1000;
+}

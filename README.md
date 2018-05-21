@@ -29,7 +29,7 @@ $ gatsby develop   # Gatsby will start a hot-reloading development environment a
 
 To test the CMS locally, you'll need run a production build of the site:
 ```
-$ npm run build
+$ npm run build    # You probably want to use `gatsby develop`
 $ npm run serve
 ```
 
