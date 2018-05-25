@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Link from 'gatsby-link'
-import {Dropdown, Menu} from 'semantic-ui-react'
+// import {Dropdown, Menu} from 'semantic-ui-react'
+import cx from 'classnames'
 import styles from './Navbar.module.css'
 
 // <div className="ui sidebar inverted vertical menu visible">
@@ -13,72 +14,61 @@ export default class Navbar extends Component {
     const {activeItem} = this.state
     return (
       <div className={styles.sidebar}>
-        <Menu secondary vertical inverted>
-          <Menu.Item
-            name="account"
-            active={activeItem === 'account'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="settings"
-            active={activeItem === 'settings'}
-            onClick={this.handleItemClick}
-          />
-          <Dropdown item text="Display Options">
-            <Dropdown.Menu>
-              <Dropdown.Item>Small</Dropdown.Item>
-              <Dropdown.Item>Medium</Dropdown.Item>
-              <Dropdown.Item>Large</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Menu>
+        <div className="ui secondary vertical menu inverted">
+          <div className="item">
+            <div className="header">Snugg Tools</div>
+            <div className="menu">
+              <Item to="/intercom" label="Intercom" {...activeItem} />
+              <Item to="/about" label="MB: Billings" {...activeItem} />
+              <Item to="/about" label="MB: Support" {...activeItem} />
+              <Item to="/about" label="MB: Stats" {...activeItem} />
+              <Item to="/about" label="MB: Optimiser" {...activeItem} />
+              <Item
+                to="/about"
+                label="Prosperworks Activity Feed"
+                {...activeItem}
+              />
+              <Item to="/about" label="Snugg Knowledge Base" {...activeItem} />
+              <Item to="/about" label="SnuggPro Debug" {...activeItem} />
+              <Item to="/about" label="Google Analytics" {...activeItem} />
+              <Item to="/about" label="Heap User Tracking" {...activeItem} />
+              <Item to="/about" label="Quickbooks Online" {...activeItem} />
+              <Item to="/about" label="OM Sessions" {...activeItem} />
+              <Item
+                to="/about"
+                label="G Sheets: Dev Priorities"
+                {...activeItem}
+              />
+              <Item to="/about" label="G Sheets: Users" {...activeItem} />
+            </div>
+          </div>
+          <div className="item">
+            <div className="header">External References</div>
+            <div className="menu">
+              <Item to="/about" label="HPXML Validation Tool" {...activeItem} />
+              <Item
+                to="/about"
+                label="Green Button Validation Tool"
+                {...activeItem}
+              />
+              {/* http://dmdvalidator.greenbuttonalliance.org */}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-/* <nav className="navbar is-transparent">
-  <div className="container">
-    <div className="navbar-brand">
-      <Link to="/" className="navbar-item">
-        <figure className="image">
-          <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-        </figure>
+const Item = ({label, to, activeItem}) => {
+  return (
+    <span className="item">
+      <Link
+        to={to}
+        className={cx('navbar-item', styles.sidebarItem)}
+        activeClassName="active">
+        {label}
       </Link>
-    </div>
-    <div className="navbar-start">
-      <Link className="navbar-item" to="/about" activeClassName="active">
-        About
-      </Link>
-      <Link className="navbar-item" to="/products" activeClassName="active">
-        Products
-      </Link>
-    </div>
-    <div className="navbar-end">
-      <a
-        className="navbar-item"
-        href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span className="icon">
-          <img src={github} alt="Github" />
-        </span>
-      </a>
-    </div>
-  </div>
-  <Menu secondary vertical>
-    <Menu.Item name='account' active={activeItem === 'account'} onClick={this.handleItemClick} />
-    <Menu.Item name='settings' active={activeItem === 'settings'} onClick={this.handleItemClick} />
-    <Dropdown item text='Display Options'>
-      <Dropdown.Menu>
-        <Dropdown.Header>Text Size</Dropdown.Header>
-        <Dropdown.Item>Small</Dropdown.Item>
-        <Dropdown.Item>Medium</Dropdown.Item>
-        <Dropdown.Item>Large</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  </Menu>
-</nav> */
-
-// export default Navbar
+    </span>
+  )
+}

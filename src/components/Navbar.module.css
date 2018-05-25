@@ -8,3 +8,8 @@
   background-color: #1b1c1d;
   z-index: 1000;
 }
+
+.sidebarItem {
+  font-size: 12px;
+  font-weight: 200;
+}
